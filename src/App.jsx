@@ -1,15 +1,13 @@
 
 import Navbar from "./components/navbar"
-import Catalogue from "./components/catalogue"
-import Cart from "./components/cart"
+import Shop from "./components/shop"
 
 function App() {
   
   return (
     <>
      <Navbar/>
-     <Catalogue/>
-     <Cart/>
+     <Shop/>
     </>
   )
 }

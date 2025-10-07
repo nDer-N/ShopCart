@@ -38,7 +38,7 @@ export default function Item({onClick, change}) {
                                 <label htmlFor='img' className="w-24 text-right">Image:</label>
                                 <input required type='file' id='src' className="flex-1" onChange={change} />
                             </div>
-                            <button className="m-2 bg-red-400 hover:bg-yellow-500 active:scale-95 active:bg-orange-400 text-white font-bold py-2 px-4 rounded transition-all duration-[190ms] ease-in-out mt-2" onClick={()=>(onClick())}>Add Item</button>
+                            <button className="m-2 bg-blue-400 hover:bg-yellow-500 active:scale-95 active:bg-orange-400 text-white font-bold py-2 px-4 rounded transition-all duration-[190ms] ease-in-out mt-2" onClick={()=>(onClick())}>Add Item</button>
                         </form>
 
                         

@@ -17,39 +17,45 @@ export default function Shop() {
     { name: "Ring Light", desc: "Ring light compatible with Adroid and Apple phones", quantity: 2, id: 5, src: ring }
   ])
 
-  const [formData, setFormData] = useState({
+  const [item, setItem] = useState({
     name: "",
     quantity: 0,
     desc: "",
     src: null,
+    id:Date.now()
   });
 
-   const handleChange = (e) => {
+  const update = (e) => {
     const { id, value, files } = e.target;
-    
-    
-    setFormData({
-      ...formData,
-      [id]: files ? files[0] : value, // si es archivo, guarda el File; si no, guarda el texto/número
+    setItem({
+      ...item,
+      [id]: files ? URL.createObjectURL(files[0]) : value,
     });
 
-    
+
   };
-  const addNewItem = (formData) => {
-    const current = [...products];
-   
-    const item = {name: formData.name, desc: formData.desc, quantity: formData.quantity, src:URL.createObjectURL(formData.img), id: (current.length+1)}
+  const addNewItem = (item) => {
+    //const current = [...products];
+
+    //const Item = { name: item.name, desc: item.desc, quantity: item.quantity, src: URL.createObjectURL(item.src), id: (current.length + 1) }
     console.log(item)
     const newInv = [...products, item];
     setProducts(newInv);
     console.log(products)
+    setItem({
+    name: "",
+    quantity: 0,
+    desc: "",
+    src: null,
+    id:Date.now()
+  })
   }
 
-  const handleNew = (e) =>{
+  const Event = (e) => {
     e.preventDefault();
-    console.log("Datos enviados:", formData);
-    addNewItem(formData);
-    
+    console.log("Datos enviados:", item);
+    addNewItem(item);
+
   }
   const [shopping, setShopping] = useState([]);
 
@@ -87,16 +93,16 @@ export default function Shop() {
   const remove = (id) => {
     const cat = [...products];
     const cart = [...shopping];
-    const cart2 = cart.filter((p)=>(p.id!=id));
-    const item = cart.find((p) => (p.id ==id));
-    cat.map((p)=>(p.id == id ? p.quantity = p.quantity+item.quantity: p))
+    const cart2 = cart.filter((p) => (p.id != id));
+    const item = cart.find((p) => (p.id == id));
+    cat.map((p) => (p.id == id ? p.quantity = p.quantity + item.quantity : p))
     setShopping(cart2);
     setProducts(cat);
   }
 
   return (
     <div>
-      <Item onClick={handleNew} change={handleChange}></Item>
+      <Item onClick={Event} change={update}></Item>
       <Catalogue products={products} onClick={add}></Catalogue>
       <Cart onClick={remove} products={shopping} ></Cart>
     </div>

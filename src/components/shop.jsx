@@ -1,4 +1,4 @@
-import React, { useState, Children } from 'react'
+import React, {Children } from 'react'
 import Cart from './cart'
 import Catalogue from './catalogue'
 import Item from './item'

@@ -1,6 +1,8 @@
 import React from 'react'
+import { useProducts } from '../context/products';
 
-export default function Cart({products, onClick}) {
+export default function Cart() {
+  const {shopping, remove}=useProducts();
   /*const products = [
     { name: "Camera", desc: "Professional Video Camera", quantity: 4, id: 1, src: cam },
     { name: "Lens", desc: "Camera Lens", quantity: 4, id: 2, src: lens },
@@ -10,10 +12,10 @@ export default function Cart({products, onClick}) {
   ]*/
   return (
     <div className='flex flex-wrap justify-content fixed bottom-0 bg-cyan-950 w-dvw'>
-      {products.map((product) => (
+      {shopping.map((product) => (
         <div className='flex shadow-md shadow-gray-600 bg-white w-2/14 text-center m-2 rounded relative' key={product.id}>
           
-          <button onClick={()=>onClick(product.id)}className="w-10 h-10 absolute top-1 right-1 text-red-500 hover:bg-red-600 hover:text-white transition-all duration-[200ms] rounded-full px-1 cursor-pointer ">
+          <button onClick={()=>remove(product.id)}className="w-10 h-10 absolute top-1 right-1 text-red-500 hover:bg-red-600 hover:text-white transition-all duration-[200ms] rounded-full px-1 cursor-pointer ">
             ✕
           </button>
           <div className='p-2'>

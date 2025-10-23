@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import chevron from '../assets/chevron.png'
 import ex from '../assets/remove.png'
+import {useProducts} from "../context/products";
 
-export default function Item({onClick, change}) {
+export default function Item() {
+
+    const { Event, update}= useProducts();
 
     const [visible, setVisible] = useState(false);
     return (
@@ -18,27 +21,27 @@ export default function Item({onClick, change}) {
                 <div className='flex'>
                     {visible && (
 
-                        <form className='flex flex-col gap-3' action="" onSubmit={onClick}>
+                        <form className='flex flex-col gap-3' action="" onSubmit={Event}>
                             <div className="flex items-center gap-2">
                                 <label htmlFor='name' className="w-24 text-right">Name:</label>
-                                <input required type='text' placeholder='name' id='name' className="flex-1 border rounded px-2 py-1" onChange={change} />
+                                <input required type='text' placeholder='name' id='name' className="flex-1 border rounded px-2 py-1" onChange={update} />
                             </div>
 
                             <div className="flex items-center gap-2">
                                 <label htmlFor='quantity' className="w-24 text-right" min={(1)}>Quantity:</label>
-                                <input required type='number' placeholder='quantity' id='quantity' className="flex-1 border rounded px-2 py-1" onChange={change} />
+                                <input required type='number' placeholder='quantity' id='quantity' className="flex-1 border rounded px-2 py-1" onChange={update} />
                             </div>
 
                             <div className="flex items-center gap-2">
                                 <label htmlFor='desc' className="w-24 text-right">Description:</label>
-                                <input required type='text' placeholder='desc' id='desc' className="flex-1 border rounded px-2 py-1" onChange={change} />
+                                <input required type='text' placeholder='desc' id='desc' className="flex-1 border rounded px-2 py-1" onChange={update} />
                             </div>
 
                             <div className="flex items-center gap-2">
                                 <label htmlFor='img' className="w-24 text-right">Image:</label>
-                                <input required type='file' id='src' className="flex-1" onChange={change} />
+                                <input required type='file' id='src' className="flex-1" onChange={update} />
                             </div>
-                            <button className="m-2 bg-green-400 hover:bg-yellow-500 active:scale-95 active:bg-orange-400 text-white font-bold py-2 px-4 rounded transition-all duration-[190ms] ease-in-out mt-2" onClick={()=>(onClick())}>Add Item</button>
+                            <button className="m-2 bg-green-400 hover:bg-yellow-500 active:scale-95 active:bg-orange-400 text-white font-bold py-2 px-4 rounded transition-all duration-[190ms] ease-in-out mt-2" type="submit">Add Item</button>
                         </form>
 
                         

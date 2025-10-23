@@ -1,13 +1,20 @@
 
 import Navbar from "./components/navbar"
 import Shop from "./components/shop"
+import { BrowserRouter } from "react-router"
+import ProductsProvider from "./context/products"
 
 function App() {
-  
+
   return (
     <>
-     <Navbar/>
-     <Shop/>
+      <BrowserRouter>
+        <ProductsProvider>
+          <Navbar />
+          <Shop />
+        </ProductsProvider>
+      </BrowserRouter>
+
     </>
   )
 }

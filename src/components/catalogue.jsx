@@ -1,7 +1,8 @@
 import React from 'react'
+import { useProducts } from '../context/products';
 
-export default function Catalogue({products, onClick}) {
-
+export default function Catalogue() {
+const {products, add} = useProducts();
  /* const products = [
     { name: "Camera", desc: "Professional Video Camera", quantity: 4, id: 1, src: cam },
     { name: "Lens", desc: "Camera Lens", quantity: 4, id: 2, src: lens },
@@ -20,7 +21,7 @@ export default function Catalogue({products, onClick}) {
             <p className='text-gray-400'>{product.desc}</p>
             <p className='text-gray-600'>Cantidad:</p>
             <p className='text-blue-600'>{product.quantity}</p>
-            <button onClick ={()=>onClick(product.id)}className="m-2 bg-yellow-400 hover:bg-yellow-500 active:scale-95 active:bg-orange-400 text-white font-bold py-2 px-4 rounded transition-all duration-[190ms] ease-in-out mt-2">
+            <button onClick ={()=>add(product.id)}className="m-2 bg-yellow-400 hover:bg-yellow-500 active:scale-95 active:bg-orange-400 text-white font-bold py-2 px-4 rounded transition-all duration-[190ms] ease-in-out mt-2">
               Add to cart
             </button>
 
